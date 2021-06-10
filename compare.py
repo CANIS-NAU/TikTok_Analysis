@@ -1,22 +1,21 @@
 import json
 from collections import Counter 
 
-with open("indigenous_full.json", 'r') as fp:
+file1 = "indigenous_full_525.json"
+# need to find a better way to automate file selection
+with open(file1, 'r') as fp:
     today = json.load(fp)
 
-with open("indigenous_full_523.json", 'r') as fp:
+file2 = "indigenous_full_523.json"
+with open(file2, 'r') as fp:
     sun = json.load(fp)
 
-with open('indigenous_hashtag_dic.json','r') as fp:
+with open('indigenous_hashtag_dic_525.json','r') as fp:
 	today_dic = json.load(fp)
 
 '''
-# Number of tiktoks by id that are the same form 5/23 and 5/25
-print(today[0]['id'])
-print(sun[0]['id'])
-print(today[0]['author']['uniqueId'])
-print(sun[0]['author']['uniqueId'])
-
+Get the number of shared tiktoks between two sessions (intersect) and the set of all tiktoks (union)
+May want to put into a function so I can return the jaccard similarity. 
 '''
 total = 0
 list_index = []
@@ -31,8 +30,8 @@ for i in range(len(today)):
 intersect = len(set(list_index))
 union = len(set(ids))
 
-print('total:', total)
-print(len(today))
+print('total tiktoks in common:', total)
+#print(len(today))
 print('intersect:', intersect)
 #print(list_index)
 print('union:',union)
@@ -45,6 +44,6 @@ big = []
 for key in today_dic:
 	big.extend(today_dic[key])
 
-print(Counter(big).most_common(15))
+print('most common hashtags:',Counter(big).most_common(15))
 #print(list(counts.keys())[0:10])
 
