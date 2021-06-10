@@ -2,14 +2,14 @@ from TikTokApi import TikTokApi
 import json
 from datetime import datetime
 
-verifyFp = 'verify_15db87d5f2b91c1a2a351399f9f3a667'
+verifyFp = 'verify_kpqe6rfw_unz5YaMC_N4WS_4WEQ_9xNj_28X1dhIgBRt8'
 api = TikTokApi.get_instance(custom_verifyFp=verifyFp, use_test_endpoints = True)
 
 results = 1999
 time = datetime.now()
 
 # Updating naming convention to hopefully give a new file each time
-current = now.strftime("%d%m%Y-%H%M%S")
+current = time.strftime("%d%m%Y-%H%M%S")
 hashtag = 'indigenous'
 full_dic = api.by_hashtag(hashtag = hashtag,count = results)
 #print(indigenous[0])
